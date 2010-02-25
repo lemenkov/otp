@@ -105,7 +105,7 @@ else
 SSL_MAKEFILE =
 endif
 
-CC_R_FLAG=@CFLAG_RUNTIME_LIBRARY_PATH@
+CC_R_FLAG=
 
 ifeq ($(findstring @,$(CC_R_FLAG)),@)
 # Old erts configure used which hasn't replaced @CFLAG_RUNTIME_LIBRARY_PATH@;
@@ -117,7 +117,7 @@ else
 ifeq ($(findstring osf,$(TARGET)),osf)		# osf1: -Wl,-rpath,
 CC_R_FLAG = -Wl,-rpath,
 else						# Default: -Wl,-R
-CC_R_FLAG = -Wl,-R
+CC_R_FLAG =
 endif
 endif
 endif
@@ -125,7 +125,7 @@ endif
 ifeq ($(strip $(CC_R_FLAG)),)
 CC_R_OPT =
 else
-CC_R_OPT = $(CC_R_FLAG)$(SSL_LIBDIR)
+CC_R_OPT =
 endif
 
 SSL_CC_RUNTIME_LIBRARY_PATH=@SSL_CC_RUNTIME_LIBRARY_PATH@
