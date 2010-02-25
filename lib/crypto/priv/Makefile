@@ -60,7 +60,7 @@ OBJS = $(OBJDIR)/crypto.o
 # ----------------------------------------------------
 
 $(SO_NIFLIB): $(OBJS)
-	$(SO_LD) $(SO_LDFLAGS) -L$(SO_SSL_LIBDIR) -Wl,-R$(SO_SSL_LIBDIR) \
+	$(SO_LD) $(SO_LDFLAGS) -L$(SO_SSL_LIBDIR) \
 	-o $@ $^ -lcrypto
 
 $(DLL_NIFLIB): $(OBJS)
