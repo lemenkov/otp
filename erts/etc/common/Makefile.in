@@ -537,10 +537,6 @@ endif
 ifneq ($(INSTALL_TOP_BIN),)
 	$(INSTALL_PROGRAM) $(INSTALL_TOP_BIN) $(RELEASE_PATH)
 endif
-ifneq ($(INSTALL_MISC),)
-	$(INSTALL_DIR) $(RELEASE_PATH)/misc
-	$(INSTALL_SCRIPT) $(INSTALL_MISC) $(RELEASE_PATH)/misc
-endif
 ifneq ($(INSTALL_ERL_OSE),)
 	$(INSTALL_DIR) $(RELEASE_PATH)/build_erl_ose
 	cd $(OSEETC) && $(TAR) erl_ose_$(SYSTEM_VSN).tar $(INSTALL_ERL_OSE)

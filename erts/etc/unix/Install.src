@@ -143,14 +143,4 @@ cp -p ../releases/%I_SYSTEM_VSN%/start_*.boot .
 cp -p $Name.boot start.boot
 cp -p ../releases/%I_SYSTEM_VSN%/$Name.script start.script
 
-#
-# Fixing the man pages
-#
-
-if [ -d $ERL_ROOT/man ]
-then
-    cd $ERL_ROOT
-    ./misc/format_man_pages $ERL_ROOT
-fi
-
 exit 0
