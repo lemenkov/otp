@@ -70,8 +70,8 @@ typedef char DL_CHAR;
 #  define OPENGL_LIB "/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib"
 #  define OPENGLU_LIB "/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGLU.dylib"
 # else
-#  define OPENGL_LIB "libGL.so"
-#  define OPENGLU_LIB "libGLU.so"
+#  define OPENGL_LIB "libGL.so.1"
+#  define OPENGLU_LIB "libGLU.so.1"
 # endif
 #endif 
 extern "C" {
