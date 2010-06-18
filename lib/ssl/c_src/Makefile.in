@@ -199,15 +199,6 @@ include $(ERL_TOP)/make/otp_release_targets.mk
 release_spec: opt
 	$(INSTALL_DIR) $(RELSYSDIR)/priv/bin
 	$(INSTALL_PROGRAM) $(PORT_PROGRAM) $(RELSYSDIR)/priv/bin
-ifneq ($(SSL_MAKEFILE),)
-	$(INSTALL_DIR) $(RELSYSDIR)/priv/obj
-	$(INSTALL_DATA) $(OBJS) $(RELSYSDIR)/priv/obj
-	sed 	-e "s;%BINDIR%;../bin;" \
-		-e "s;%SSL_LIBDIR%;$(SSL_LIBDIR);" \
-		-e "s;%OBJS;$(OBJS);" \
-		-e "s;%LIBS%;$(LIBS);" ./Makefile.dist \
-		> $(RELSYSDIR)/priv/obj/Makefile
-endif
 
 release_docs_spec:
 
