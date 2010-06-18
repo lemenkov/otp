@@ -125,8 +125,6 @@ $(OBJDIR)/memsup.o: memsup.h
 include $(ERL_TOP)/make/otp_release_targets.mk
 
 release_spec: opt
-	$(INSTALL_DIR) "$(RELSYSDIR)/src"
-	$(INSTALL_DATA) $(C_FILES) "$(RELSYSDIR)/src"
 	$(INSTALL_DIR) "$(RELSYSDIR)/priv/bin"
 	$(INSTALL_PROGRAM) $(TARGET_FILES) "$(RELSYSDIR)/priv/bin"
 
