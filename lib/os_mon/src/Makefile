@@ -33,8 +33,13 @@ RELSYSDIR = $(RELEASE_PATH)/lib/os_mon-$(VSN)
 # ----------------------------------------------------
 # Target Specs
 # ----------------------------------------------------
+ifeq ($(findstring win32,$(TARGET)),win32)
+NTEVENTLOG=nteventlog
+else
+NTEVENTLOG=
+endif
 MODULES= disksup memsup cpu_sup os_mon os_mon_mib os_sup os_mon_sysinfo \
-	nteventlog
+	 $(NTEVENTLOG)
 
 INCLUDE=../include
 CSRC=../c_src
@@ -78,7 +83,11 @@ docs:
 # ----------------------------------------------------
 
 $(APP_TARGET): $(APP_SRC) ../vsn.mk
+ifeq ($(findstring win32,$(TARGET)),win32)
 	sed -e 's;%VSN%;$(VSN);' $< > $@
+else
+	sed -e 's;%VSN%;$(VSN);;s;,\s*nteventlog;;' $< > $@
+endif
 
 $(APPUP_TARGET): $(APPUP_SRC) ../vsn.mk
 	sed -e 's;%VSN%;$(VSN);' $< > $@
