@@ -77,7 +77,6 @@ ASN1_FILES = \
 	Seq.asn \
 	Seq.asn1config
 
-INFO_FILE = ../../info
 EXTRA_FILES = \
 	$(DEFAULT_HTML_FILES) \
 	$(ASN1_FILES) \
@@ -187,7 +186,6 @@ release_docs_spec: docs
 	$(INSTALL_DIR) $(RELSYSDIR)/doc/html
 	$(INSTALL_DATA) $(HTMLDIR)/* \
 		$(RELSYSDIR)/doc/html	
-	$(INSTALL_DATA) $(INFO_FILE) $(RELSYSDIR)
 	$(INSTALL_DIR) $(RELEASE_PATH)/man/man3
 	$(INSTALL_DATA) $(MAN3DIR)/* $(RELEASE_PATH)/man/man3
 
@@ -207,7 +205,6 @@ release_docs_spec: docs
 	$(INSTALL_DIR) $(RELSYSDIR)/doc/html
 	$(INSTALL_DATA) $(GIF_FILES) $(EXTRA_FILES) $(HTML_FILES) \
 	$(HTML_APPHISTORY) $(RELSYSDIR)/doc/html
-	$(INSTALL_DATA) $(INFO_FILE) $(RELSYSDIR)
 	$(INSTALL_DIR) $(RELEASE_PATH)/man/man3
 	$(INSTALL_DATA) $(MAN3_FILES) $(RELEASE_PATH)/man/man3
 endif

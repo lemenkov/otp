@@ -66,7 +66,6 @@ XML_FILES = $(BOOK_FILES) $(XML_APPLICATION_FILES) $(XML_REF3_FILES) \
 HTML_FILES = $(XML_APPLICATION_FILES:%.xml=$(HTMLDIR)/%.html) \
 	$(XML_PART_FILES:%.xml=$(HTMLDIR)/%.html)
 
-INFO_FILE = ../../info
 EXTRA_FILES = \
 	$(DEFAULT_GIF_FILES) \
 	$(DEFAULT_HTML_FILES) \
@@ -176,7 +175,6 @@ release_docs_spec: docs
 	$(INSTALL_DIR) $(RELSYSDIR)/doc/html
 	$(INSTALL_DATA) $(HTMLDIR)/* \
 		$(RELSYSDIR)/doc/html
-	$(INSTALL_DATA) $(INFO_FILE) $(RELSYSDIR)
 	$(INSTALL_DIR) $(RELEASE_PATH)/man/man3
 	$(INSTALL_DATA) $(MAN3DIR)/* $(RELEASE_PATH)/man/man3
 else
@@ -195,7 +193,6 @@ release_docs_spec: docs
 	$(INSTALL_DIR) $(RELSYSDIR)/doc/html
 	$(INSTALL_DATA) $(EXTRA_FILES) $(HTML_FILES) \
 		$(RELSYSDIR)/doc/html
-	$(INSTALL_DATA) $(INFO_FILE) $(RELSYSDIR)
 	$(INSTALL_DIR) $(RELEASE_PATH)/man/man3
 	$(INSTALL_DATA) $(MAN3_FILES) $(RELEASE_PATH)/man/man3
 endif

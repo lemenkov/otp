@@ -83,8 +83,6 @@ XML_FILES = \
 	$(XML_NOTES_FILES) $(XML_APPLICATION_FILES)
 
 # ----------------------------------------------------
-INFO_FILE = ../../info
-
 HTML_FILES = \
 	$(XML_APPLICATION_FILES:%.xml=$(HTMLDIR)/%.html) \
 	$(XML_PART_FILES:%.xml=$(HTMLDIR)/%.html)
@@ -158,7 +156,6 @@ release_docs_spec: docs
 	$(INSTALL_DIR) $(RELSYSDIR)/doc/html
 	$(INSTALL_DATA) $(HTMLDIR)/*  \
 		$(RELSYSDIR)/doc/html
-	$(INSTALL_DATA) $(INFO_FILE) $(RELSYSDIR)
 	$(INSTALL_DIR) $(RELEASE_PATH)/man/man3
 	$(INSTALL_DATA) $(MAN3_FILES) $(RELEASE_PATH)/man/man3
 

@@ -97,8 +97,6 @@ GIF_FILES = images/arc.gif \
 HTML_FILES = $(XML_APPLICATION_FILES:%.xml=$(HTMLDIR)/%.html) \
 	$(XML_PART_FILES:%.xml=$(HTMLDIR)/%.html)
 
-INFO_FILE = ../../info
-
 MAN3_FILES = $(XML_REF3_FILES:%.xml=$(MAN3DIR)/%.3)
 
 HTML_REF_MAN_FILE = $(HTMLDIR)/index.html
@@ -148,7 +146,6 @@ release_docs_spec: docs
 	$(INSTALL_DATA) $(TOP_PDF_FILE)  $(RELSYSDIR)/doc/pdf
 	$(INSTALL_DIR) $(RELSYSDIR)/doc/html
 	(/bin/cp -rf  $(HTMLDIR) $(RELSYSDIR)/doc)
-	$(INSTALL_DATA) $(INFO_FILE) $(RELSYSDIR)
 	$(INSTALL_DIR) $(RELEASE_PATH)/man/man3
 	$(INSTALL_DATA) $(MAN3DIR)/* $(RELEASE_PATH)/man/man3
 

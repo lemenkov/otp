@@ -53,7 +53,6 @@ GIF_FILES =
 HTML_FILES = $(XML_APPLICATION_FILES:%.xml=$(HTMLDIR)/%.html) \
 	$(XML_PART_FILES:%.xml=$(HTMLDIR)/%.html)
 
-INFO_FILE = ../../info
 EXTRA_FILES = \
 	$(DEFAULT_GIF_FILES) \
 	$(DEFAULT_HTML_FILES) \
@@ -108,7 +107,6 @@ release_docs_spec: docs
 	$(INSTALL_DIR) $(RELSYSDIR)/doc/html
 	$(INSTALL_DATA) $(HTMLDIR)/* \
 		$(RELSYSDIR)/doc/html
-	$(INSTALL_DATA) $(INFO_FILE) $(RELSYSDIR)
 
 
 release_spec:

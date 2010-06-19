@@ -88,9 +88,6 @@ XML_FILES = \
 HTML_FILES = $(XML_APPLICATION_FILES:%.xml=$(HTMLDIR)/%.html) \
 	$(XML_PART_FILES:%.xml=$(HTMLDIR)/%.html)
 
-INFO_FILE     = ../../info
-INFO_FILE_SRC = ../../info.src
-
 MAN1_FILES = $(XML_REF1_FILES:%.xml=$(MAN1DIR)/%.1)
 MAN3_FILES = $(XML_REF3_FILES:%.xml=$(MAN3DIR)/%.3)
 
@@ -109,7 +106,7 @@ XML_FLAGS +=
 $(HTMLDIR)/%.gif: %.gif
 	$(INSTALL_DATA) $< $@
 
-docs: pdf html man $(INFO_FILE) 
+docs: pdf html man
 
 $(TOP_PDF_FILE): $(XML_FILES)
 
@@ -120,9 +117,6 @@ html: gifs $(HTML_REF_MAN_FILE)
 man: $(MAN1_FILES) $(MAN3_FILES)
 
 gifs: $(GIF_FILES:%=$(HTMLDIR)/%)
-
-$(INFO_FILE): $(INFO_FILE_SRC) ../../vsn.mk
-	sed -e 's;%RELEASE%;$(SYSTEM_VSN);' $(INFO_FILE_SRC) > $(INFO_FILE)
 
 
 debug opt: 
@@ -145,7 +139,6 @@ release_docs_spec: docs
 	$(INSTALL_DIR) $(RELSYSDIR)/doc/html
 	$(INSTALL_DATA) $(HTMLDIR)/* \
 		$(RELSYSDIR)/doc/html
-	$(INSTALL_DATA) $(INFO_FILE) $(RELSYSDIR)
 	$(INSTALL_DIR) $(RELEASE_PATH)/man/man3
 	$(INSTALL_DATA) $(MAN3DIR)/* $(RELEASE_PATH)/man/man3
 	$(INSTALL_DIR) $(RELEASE_PATH)/man/man1

@@ -63,8 +63,6 @@ XML_FILES = $(XML_REF1_FILES) $(XML_REF3_FILES) $(BOOK_FILES) \
 HTML_FILES = $(XML_APPLICATION_FILES:%.xml=$(HTMLDIR)/%.html) \
 	$(XML_PART_FILES:%.xml=$(HTMLDIR)/%.html)
 
-INFO_FILE = ../../info
-
 GIF_FILES = 
 
 MAN1_FILES = $(XML_REF1_FILES:%.xml=$(MAN1DIR)/%.1)
@@ -118,7 +116,6 @@ release_docs_spec: docs
 	$(INSTALL_DIR) $(RELSYSDIR)/doc/html
 	$(INSTALL_DATA) $(HTMLDIR)/* \
 		$(RELSYSDIR)/doc/html
-	$(INSTALL_DATA) $(INFO_FILE) $(RELSYSDIR)
 	$(INSTALL_DIR) $(RELEASE_PATH)/man/man1
 	$(INSTALL_DATA) $(MAN1_FILES) $(RELEASE_PATH)/man/man1
 	$(INSTALL_DIR) $(RELEASE_PATH)/man/man3

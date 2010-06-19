@@ -35,7 +35,6 @@ APPNAME=syntax_tools
 DOC_TITLE="Welcome to SyntaxTools"
 
 HTML_FILES = *.html
-INFO_FILE = ../info
 # ----------------------------------------------------
 # Target Specs
 # ----------------------------------------------------
@@ -74,7 +73,6 @@ include $(ERL_TOP)/make/otp_release_targets.mk
 release_docs_spec: docs
 	$(INSTALL_DIR) $(RELSYSDIR)/doc/html
 	$(INSTALL_DATA)  $(HTML_FILES) $(RELSYSDIR)/doc/html
-	$(INSTALL_DATA) $(INFO_FILE) $(RELSYSDIR)
 
 
 release_spec:

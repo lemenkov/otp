@@ -87,7 +87,6 @@ GIF_FILES = \
 HTML_FILES = $(XML_APPLICATION_FILES:%.xml=$(HTMLDIR)/%.html) \
 	$(XML_PART_FILES:%.xml=$(HTMLDIR)/%.html)
 
-INFO_FILE = ../../info
 EXTRA_FILES = summary.html.src \
 	$(DEFAULT_GIF_FILES) \
 	$(DEFAULT_HTML_FILES) \
@@ -282,7 +281,6 @@ ifdef DOCSUPPORT
 release_docs_spec: docs
 	$(INSTALL_DIR) $(RELSYSDIR)/doc/pdf
 	$(INSTALL_DATA) $(TOP_PDF_FILE) $(RELSYSDIR)/doc/pdf
-	$(INSTALL_DATA) $(INFO_FILE) $(RELSYSDIR)
 	$(INSTALL_DIR) $(RELSYSDIR)/doc/html
 	(/bin/cp -rf  $(HTMLDIR) $(RELSYSDIR)/doc)
 	$(INSTALL_DIR) $(RELEASE_PATH)/man/man3
@@ -304,7 +302,6 @@ release_docs_spec: docs
 	$(INSTALL_DIR) $(RELSYSDIR)/doc/html
 	$(INSTALL_DATA) $(GIF_FILES) $(EXTRA_FILES) $(HTML_FILES) \
 		$(RELSYSDIR)/doc/html
-	$(INSTALL_DATA) $(INFO_FILE) $(RELSYSDIR)
 ifneq (,$(JAVA))
 	$(INSTALL_DIR) $(RELSYSDIR)/doc/html/java
 	$(INSTALL_DIR) $(RELSYSDIR)/doc/html/java/resources

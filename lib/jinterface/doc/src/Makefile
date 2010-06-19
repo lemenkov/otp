@@ -93,7 +93,6 @@ JAVA_DOC_FILES = \
 	stylesheet.css \
 	help-doc.html 
 
-INFO_FILE = ../../info
 JAVA_EXTRA_FILES = $(JAVA_DOC_FILES:%=$(HTMLDIR)/java/%)
 
 JAVA_GEN_FILES = \
@@ -164,7 +163,6 @@ release_docs_spec: docs
 	$(INSTALL_DATA) $(TOP_PDF_FILE) $(RELSYSDIR)/doc/pdf
 	$(INSTALL_DIR) $(RELSYSDIR)/doc/html
 	$(INSTALL_DIR) $(RELSYSDIR)/doc/html/java/$(JAVA_PKG_PATH)
-	$(INSTALL_DATA) $(INFO_FILE) $(RELSYSDIR)
 	(/bin/cp -rf  ../html $(RELSYSDIR)/doc)
 
 #	$(INSTALL_DATA) $(GIF_FILES) $(EXTRA_FILES) $(HTML_FILES) \
