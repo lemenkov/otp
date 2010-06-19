@@ -35,12 +35,17 @@ RELSYSDIR = $(RELEASE_PATH)/lib/$(APPLICATION)-$(VSN)
 # Target Specs
 # ----------------------------------------------------
 XML_APPLICATION_FILES = ref_man.xml
+ifeq ($(findstring win32,$(TARGET)),win32)
+NTEVENTLOG_DOCFILE=nteventlog.xml
+else
+NTEVENTLOG_DOCFILE=
+endif
 XML_REF3_FILES = cpu_sup.xml \
 	disksup.xml \
 	memsup.xml \
 	os_mon_mib.xml \
 	os_sup.xml \
-	nteventlog.xml
+	$(NTEVENTLOG_DOCFILE)
 
 XML_REF6_FILES = os_mon_app.xml 
 
