@@ -92,7 +92,7 @@ release_spec: opt
 	$(INSTALL_DATA) $(TARGET_FILES) $(RELSYSDIR)/ebin
 	$(INSTALL_DIR)  $(RELSYSDIR)/src
 	$(INSTALL_DIR)  $(RELSYSDIR)/src/engine
-	$(INSTALL_DATA) $(ERL_FILES) $(INTERNAL_HRL_FILES) $(RELSYSDIR)/src/engine
+	$(INSTALL_DATA) $(INTERNAL_HRL_FILES) $(RELSYSDIR)/src/engine
 	$(INSTALL_DIR)  $(RELSYSDIR)/include
 
 

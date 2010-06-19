@@ -115,7 +115,7 @@ include $(ERL_TOP)/make/otp_release_targets.mk
 release_spec: opt
 	$(INSTALL_DIR) $(RELSYSDIR)/src
 	$(INSTALL_DIR) $(RELSYSDIR)/src/compiler
-	$(INSTALL_DATA) $(PARSER_SRC) $(ERL_FILES) $(INTERNAL_HRL_FILES) $(RELSYSDIR)/src/compiler
+	$(INSTALL_DATA) $(INTERNAL_HRL_FILES) $(RELSYSDIR)/src/compiler
 	$(INSTALL_DIR) $(RELSYSDIR)/ebin
 	$(INSTALL_DATA) $(TARGET_FILES) $(RELSYSDIR)/ebin
 

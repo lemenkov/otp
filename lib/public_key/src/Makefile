@@ -46,8 +46,6 @@ MODULES = \
 
 HRL_FILES = $(INCLUDE)/public_key.hrl
 
-INTERNAL_HRL_FILES = 
-
 ERL_FILES = $(MODULES:%=%.erl)
 
 TARGET_FILES= $(MODULES:%=$(EBIN)/%.$(EMULATOR))
@@ -100,8 +98,6 @@ $(APPUP_TARGET):	$(APPUP_SRC) ../vsn.mk
 include $(ERL_TOP)/make/otp_release_targets.mk
 
 release_spec: opt
-	$(INSTALL_DIR) $(RELSYSDIR)/src
-	$(INSTALL_DATA) $(INTERNAL_HRL_FILES) $(ERL_FILES) $(RELSYSDIR)/src
 	$(INSTALL_DIR) $(RELSYSDIR)/include
 	$(INSTALL_DATA) $(HRL_FILES) $(RELSYSDIR)/include
 	$(INSTALL_DIR) $(RELSYSDIR)/ebin

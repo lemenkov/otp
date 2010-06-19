@@ -68,8 +68,6 @@ copy:
 include $(ERL_TOP)/make/otp_release_targets.mk
 
 release_spec: 
-	$(INSTALL_DIR) $(RELSYSDIR)/src
-	$(INSTALL_DATA) $(ERL_FILES) $(RELSYSDIR)/src
 	$(INSTALL_DIR) $(RELSYSDIR)/ebin
 	$(INSTALL_DATA) $(STATIC_TARGET_FILES) $(RELSYSDIR)/ebin
 

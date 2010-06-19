@@ -93,7 +93,7 @@ release_spec: opt
 	$(INSTALL_DATA) $(TARGET_FILES) $(RELSYSDIR)/ebin
 	$(INSTALL_DIR)  $(RELSYSDIR)/src
 	$(INSTALL_DIR)  $(RELSYSDIR)/src/tcp
-	$(INSTALL_DATA) $(ERL_FILES) $(INTERNAL_HRL_FILES) $(RELSYSDIR)/src/tcp
+	$(INSTALL_DATA) $(INTERNAL_HRL_FILES) $(RELSYSDIR)/src/tcp
 
 
 release_docs_spec:

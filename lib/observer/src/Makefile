@@ -113,7 +113,6 @@ include $(ERL_TOP)/make/otp_release_targets.mk
 
 release_spec: opt
 	$(INSTALL_DIR) $(RELSYSDIR)/src
-	$(INSTALL_DATA) $(ERL_FILES) $(RELSYSDIR)/src
 	$(INSTALL_DATA) $(INTERNAL_HRL_FILES) $(RELSYSDIR)/src
 	$(INSTALL_DIR) $(RELSYSDIR)/examples
 	$(INSTALL_DATA) $(EXAMPLE_FILES) $(RELSYSDIR)/examples

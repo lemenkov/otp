@@ -87,7 +87,7 @@ release_spec: opt
 	$(INSTALL_DIR) $(RELSYSDIR)/ebin
 	$(INSTALL_DATA) $(OBJECTS) $(RELSYSDIR)/ebin
 	$(INSTALL_DIR) $(RELSYSDIR)/src
-	$(INSTALL_DATA) $(SOURCES) $(HRL_FILES) $(YRL_FILE) $(RELSYSDIR)/src
+	$(INSTALL_DATA) $(HRL_FILES) $(RELSYSDIR)/src
 
 release_docs_spec:
 
