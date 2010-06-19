@@ -102,8 +102,6 @@ release release_docs release_tests release_html:
 	$(V_at)$(MAKE) $(MFLAGS) RELEASE_PATH="$(RELEASE_PATH)" $(TARGET_MAKEFILE)  $@_spec
 
 release_spec: opt
-	$(V_at)$(INSTALL_DIR) "$(RELSYSDIR)/java_src/com/ericsson/otp/erlang"
-	$(V_at)$(INSTALL_DATA) $(JAVA_SRC) "$(RELSYSDIR)/java_src/com/ericsson/otp/erlang"
 	$(V_at)$(INSTALL_DIR) "$(RELSYSDIR)/priv"
 	$(V_at)$(INSTALL_DATA) $(JAVA_DEST_ROOT)$(JARFILE) "$(RELSYSDIR)/priv"
 
