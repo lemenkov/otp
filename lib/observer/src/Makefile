@@ -56,11 +56,15 @@ TARGET_FILES= $(MODULES:%=$(EBIN)/%.$(EMULATOR)) $(APP_TARGET) $(APPUP_TARGET)
 PRIVDIR= ../priv
 WEBTOOLFILES= $(PRIVDIR)/crashdump_viewer.tool
 BINDIR= $(PRIVDIR)/bin
+ifeq ($(findstring win32,$(TARGET)),win32)
+WIN32_EXECUTABLES= $(BINDIR)/etop.bat $(BINDIR)/getop.bat
+else
+WIN32_EXECUTABLES=
+endif
 EXECUTABLES= \
 	$(BINDIR)/etop \
 	$(BINDIR)/getop \
-	$(BINDIR)/etop.bat \
-	$(BINDIR)/getop.bat
+	$(WIN32_EXECUTABLES)
 CDVDIR= $(PRIVDIR)/crashdump_viewer
 GIF_FILES= \
 	$(CDVDIR)/collapsd.gif \
