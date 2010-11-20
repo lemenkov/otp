@@ -389,19 +389,7 @@ public class OtpErlangList extends OtpErlangObject implements
      */
 
     public String stringValue() throws OtpErlangException {
-	if (! isProper()) {
-	    throw new OtpErlangException("Non-proper list: " + this);
-	}
-	final int[] values = new int[arity()];
-	for (int i = 0; i < values.length; ++i) {
-	    final OtpErlangObject o = elementAt(i);
-	    if (! (o instanceof OtpErlangLong)) {
-		throw new OtpErlangException("Non-integer term: " + o);
-	    }
-	    final OtpErlangLong l = (OtpErlangLong) o;
-	    values[i] = l.intValue();
-	}
-	return new String(values, 0, values.length);
+	throw new OtpErlangException("No UNICODE support in java-1.5.0-gcj");
     }
 
 
