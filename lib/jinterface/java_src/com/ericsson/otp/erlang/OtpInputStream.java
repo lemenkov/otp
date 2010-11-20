@@ -1074,17 +1074,8 @@ public class OtpInputStream extends ByteArrayInputStream {
 	case OtpExternal.nilTag:
 	    return "";
 	case OtpExternal.listTag: // List when unicode +
-	    len = read4BE();
-	    intbuf = new int[len];
-	    for (int i = 0; i < len; i++) {
-		intbuf[i] = read_int();
-		if (! OtpErlangString.isValidCodePoint(intbuf[i])) {
-		    throw new OtpErlangDecodeException
-			("Invalid CodePoint: " + intbuf[i]);
-		}
-	    }
-	    read_nil();
-	    return new String(intbuf, 0, intbuf.length);
+	    throw new OtpErlangDecodeException(
+		    "No UNICODE support in java-1.5.0-gcj");
 	default:
 	    throw new OtpErlangDecodeException(
 		    "Wrong tag encountered, expected " + OtpExternal.stringTag
