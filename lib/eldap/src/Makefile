@@ -98,10 +98,6 @@ include $(ERL_TOP)/make/otp_release_targets.mk
 release_spec: opt
 	$(INSTALL_DIR) "$(RELSYSDIR)/ebin"
 	$(INSTALL_DATA) $(TARGET_FILES) $(APP_TARGET) $(APPUP_TARGET) "$(RELSYSDIR)/ebin"
-	$(INSTALL_DIR) "$(RELSYSDIR)/src"
-	$(INSTALL_DATA) $(ERL_FILES) "$(RELSYSDIR)/src"
-	$(INSTALL_DIR) "$(RELSYSDIR)/asn1"
-	$(INSTALL_DATA) ../asn1/$(ASN1_FILES) "$(RELSYSDIR)/asn1"
 	$(INSTALL_DIR) "$(RELSYSDIR)/include"
 	$(INSTALL_DATA) $(EXTERNAL_HRL_FILES) "$(RELSYSDIR)/include"
 
