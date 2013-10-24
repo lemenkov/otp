@@ -74,13 +74,6 @@
 # define HAVE_DES_ede3_cfb_encrypt
 #endif
 
-#if OPENSSL_VERSION_NUMBER >= 0x009080ffL \
-	&& !defined(OPENSSL_NO_EC) \
-	&& !defined(OPENSSL_NO_ECDH) \
-	&& !defined(OPENSSL_NO_ECDSA)
-# define HAVE_EC
-#endif
-
 #if defined(HAVE_EC)
 #include <openssl/ec.h>
 #include <openssl/ecdh.h>
