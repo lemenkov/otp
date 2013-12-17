@@ -1565,6 +1565,8 @@ AC_CHECK_MEMBERS([struct ifreq.ifr_enaddr], [], [],
 	 #endif
 	])
 
+AC_CHECK_HEADERS(systemd/sd-daemon.h)
+
 dnl ----------------------------------------------------------------------
 dnl Check the availability for libdlpi
 dnl ----------------------------------------------------------------------

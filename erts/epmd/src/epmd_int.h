@@ -321,6 +321,9 @@ typedef struct {
   int listenfd[MAX_LISTEN_SOCKETS];
   char *addresses;
   char **argv;
+#ifdef HAVE_SYSTEMD_SD_DAEMON_H
+  int is_systemd;
+#endif
 } EpmdVars;
 
 void dbg_printf(EpmdVars*,int,const char*,...);
