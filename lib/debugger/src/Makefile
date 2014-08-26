@@ -77,7 +77,7 @@ MODULES= \
 
 HRL_FILES=
 
-INTERNAL_HRL_FILES= dbg_ieval.hrl
+INTERNAL_HRL_FILES= dbg_ieval.hrl dbg_wx_filedialog_win.hrl
 
 ERL_FILES= $(MODULES:%=%.erl)
 
