@@ -50,14 +50,25 @@
 %%%----------------------------------------------------------------------
 %% Start webtool and webcover from erlang shell
 start() ->
-    webtool:start(),
-    webtool:start_tools([],"app=webcover"),
+    try
+        % Disable automatic dependency picking up
+        erlang:apply(webtool, start, []),
+        erlang:apply(webtool, start_tools, [[],"app=webcover"])
+    catch
+        error:undef -> error_logger:error_msg("No erlang-webtool found.~nPlease install erlang-webtool package first.~n")
+    end,
     ok.
 
 %% Stop webtool and webcover from erlang shell
 stop() ->
-    webtool:stop_tools([],"app=webcover"),
-    webtool:stop().
+    try
+        % Disable automatic dependency picking up
+        erlang:apply(webtool, stop_tools, [[],"app=webcover"]),
+        erlang:apply(webtool, stop, [])
+    catch
+        error:undef -> error_logger:error_msg("No erlang-webtool found.~nPlease install erlang-webtool package first.~n")
+    end,
+    ok.
 
 
 
