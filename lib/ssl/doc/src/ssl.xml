@@ -123,7 +123,7 @@
 
     <p><c>sslsocket() - opaque to the user. </c></p>
     
-    <p><c>protocol() = sslv3 | tlsv1 | 'tlsv1.1' | 'tlsv1.2' </c></p>
+    <p><c>protocol() = tlsv1 | 'tlsv1.1' | 'tlsv1.2' </c></p>
     
     <p><c>ciphers() = [ciphersuite()] | string() (according to old API)</c></p>
     

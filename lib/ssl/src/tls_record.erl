@@ -269,13 +269,19 @@ supported_protocol_versions([_|_] = Vsns) ->
 %% 
 %%--------------------------------------------------------------------
 is_acceptable_version({N,_}) 
-  when N >= ?LOWEST_MAJOR_SUPPORTED_VERSION ->
+  when N > ?LOWEST_MAJOR_SUPPORTED_VERSION ->
+    true;
+is_acceptable_version({N,M}) 
+  when N == ?LOWEST_MAJOR_SUPPORTED_VERSION andalso M >= ?LOWEST_MINOR_SUPPORTED_VERSION ->
     true;
 is_acceptable_version(_) ->
     false.
 
 is_acceptable_version({N,_} = Version, Versions)   
-  when N >= ?LOWEST_MAJOR_SUPPORTED_VERSION ->
+  when N > ?LOWEST_MAJOR_SUPPORTED_VERSION ->
+    lists:member(Version, Versions);
+is_acceptable_version({N,M} = Version, Versions)   
+  when N == ?LOWEST_MAJOR_SUPPORTED_VERSION andalso M >= ?LOWEST_MINOR_SUPPORTED_VERSION ->
     lists:member(Version, Versions);
 is_acceptable_version(_,_) ->
     false.

@@ -144,6 +144,7 @@
 %% 	 }).
 
 -define(LOWEST_MAJOR_SUPPORTED_VERSION, 3).
+-define(LOWEST_MINOR_SUPPORTED_VERSION, 1).
 	
 
 -record(generic_stream_cipher, {

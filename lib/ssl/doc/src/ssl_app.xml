@@ -47,16 +47,19 @@
       </p>
     <p>Note that the environment parameters can be set on the command line,
       for instance,</p>
-    <p><c>erl ... -ssl protocol_version '[sslv3, tlsv1]' ...</c>.
+    <p><c>erl ... -ssl protocol_version '[tlsv1.1, tlsv1]' ...</c>.
       </p>
     <taglist>
-      <tag><c><![CDATA[protocol_version = [sslv3|tlsv1] <optional>]]></c>.</tag>
+      <tag><c><![CDATA[protocol_version = [tlsv1|tlsv1.1|tlsv1.2] <optional>]]></c>.</tag>
       <item>
 	<p>Protocol that will be supported by started clients and
 	servers. If this option is not set it will default to all
 	protocols currently supported by the erlang ssl application.
 	Note that this option may be overridden by the version option
 	to ssl:connect/[2,3] and ssl:listen/2.
+	</p>
+	<p>For Debian GNU/Linux distribution the sslv3 protocol was
+	disabled due to its security issues.
 	</p>
       </item>
 
