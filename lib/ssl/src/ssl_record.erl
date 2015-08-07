@@ -1,7 +1,7 @@
 %%
 %% %CopyrightBegin%
 %%
-%% Copyright Ericsson AB 2013-2013. All Rights Reserved.
+%% Copyright Ericsson AB 2013-2015. All Rights Reserved.
 %%
 %% The contents of this file are subject to the Erlang Public License,
 %% Version 1.1, (the "License"); you may not use this file except in
@@ -48,7 +48,7 @@
 -export([compress/3, uncompress/3, compressions/0]).
 
 %% Payload encryption/decryption
--export([cipher/4, decipher/3, is_correct_mac/2]).
+-export([cipher/4, decipher/4, is_correct_mac/2]).
 
 %%====================================================================
 %% Internal application API
@@ -372,7 +372,7 @@ cipher(Version, Fragment,
 	ssl_cipher:cipher(BulkCipherAlgo, CipherS0, MacHash, Fragment, Version),
     {CipherFragment,  WriteState0#connection_state{cipher_state = CipherS1}}.
 %%--------------------------------------------------------------------
--spec decipher(tls_version(), binary(), #connection_state{}) -> {binary(), binary(), #connection_state{}}.
+-spec decipher(tls_version(), binary(), #connection_state{}, boolean()) -> {binary(), binary(), #connection_state{}}.
 %%
 %% Description: Payload decryption
 %%--------------------------------------------------------------------
@@ -382,8 +382,8 @@ decipher(Version, CipherFragment,
 							BulkCipherAlgo,
 						    hash_size = HashSz},
 			   cipher_state = CipherS0
-			  } = ReadState) ->
-    case ssl_cipher:decipher(BulkCipherAlgo, HashSz, CipherS0, CipherFragment, Version) of
+			  } = ReadState, PaddingCheck) ->
+    case ssl_cipher:decipher(BulkCipherAlgo, HashSz, CipherS0, CipherFragment, Version, PaddingCheck) of
 	{PlainFragment, Mac, CipherS1} ->
 	    CS1 = ReadState#connection_state{cipher_state = CipherS1},
 	    {PlainFragment, Mac, CS1};

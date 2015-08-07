@@ -114,7 +114,8 @@
 	  next_protocols_advertised = undefined, %% [binary()],
 	  next_protocol_selector = undefined,  %% fun([binary()]) -> binary())
 	  log_alert             :: boolean(),
-	  server_name_indication = undefined
+	  server_name_indication = undefined,
+          padding_check = true
 	  }).
 
 -record(config, {ssl,               %% SSL parameters

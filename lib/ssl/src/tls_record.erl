@@ -1,7 +1,7 @@
 %%
 %% %CopyrightBegin%
 %%
-%% Copyright Ericsson AB 2007-2013. All Rights Reserved.
+%% Copyright Ericsson AB 2007-2015. All Rights Reserved.
 %%
 %% The contents of this file are subject to the Erlang Public License,
 %% Version 1.1, (the "License"); you may not use this file except in
@@ -34,7 +34,7 @@
 -export([get_tls_records/2]).
 
 %% Decoding
--export([decode_cipher_text/2]).
+-export([decode_cipher_text/3]).
 
 %% Encoding
 -export([encode_plain_text/4]).
@@ -137,7 +137,7 @@ encode_plain_text(Type, Version, Data,
     {CipherText, ConnectionStates#connection_states{current_write = WriteState#connection_state{sequence_number = Seq +1}}}.
 
 %%--------------------------------------------------------------------
--spec decode_cipher_text(#ssl_tls{}, #connection_states{}) ->
+-spec decode_cipher_text(#ssl_tls{}, #connection_states{}, boolean()) ->
 				{#ssl_tls{}, #connection_states{}}| #alert{}.
 %%
 %% Description: Decode cipher text
@@ -164,6 +164,33 @@ decode_cipher_text(#ssl_tls{type = Type, version = Version,
 	    ?ALERT_REC(?FATAL, ?BAD_RECORD_MAC)
     end.
 
+decode_cipher_text(#ssl_tls{type = Type, version = Version,
+			    fragment = CipherFragment} = CipherText,
+		   #connection_states{current_read =
+					  #connection_state{
+					     compression_state = CompressionS0,
+					     sequence_number = Seq,
+					     security_parameters=
+						 #security_parameters{compression_algorithm=CompAlg}
+					    } = ReadState0} = ConnnectionStates0, PaddingCheck) ->
+    case ssl_record:decipher(Version, CipherFragment, ReadState0, PaddingCheck) of
+	{PlainFragment, Mac, ReadState1} ->
+	    MacHash = calc_mac_hash(Type, Version, PlainFragment, ReadState1),
+	    case ssl_record:is_correct_mac(Mac, MacHash) of
+		true ->
+		    {Plain, CompressionS1} = ssl_record:uncompress(CompAlg,
+								   PlainFragment, CompressionS0),
+		    ConnnectionStates = ConnnectionStates0#connection_states{
+					  current_read = ReadState1#connection_state{
+							   sequence_number = Seq + 1,
+							   compression_state = CompressionS1}},
+		    {CipherText#ssl_tls{fragment = Plain}, ConnnectionStates};
+		false ->
+			?ALERT_REC(?FATAL, ?BAD_RECORD_MAC)
+	    end;
+	    #alert{} = Alert ->
+	    Alert
+    end. 
 %%--------------------------------------------------------------------
 -spec protocol_version(tls_atom_version() | tls_version()) -> 
 			      tls_version() | tls_atom_version().		      
