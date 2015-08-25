@@ -27,7 +27,7 @@ include vsn.mk
 # ----------------------------------------------------------------------
 
 # Other erts dirs than the emulator dir...
-ERTSDIRS = etc epmd lib_src
+ERTSDIRS = etc lib_src
 XINSTDIRS = preloaded
 ifeq ($(NO_START_SCRIPTS),)
 ERTSDIRS += start_scripts

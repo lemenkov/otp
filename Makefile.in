@@ -990,7 +990,6 @@ TEST_DIRS := \
 	lib/test_server \
 	$(wildcard lib/*/test) \
 	erts/test \
-	erts/epmd/test \
 	erts/emulator/test
 
 # Any applications listed in SKIP-APPLICATIONS should be skipped
