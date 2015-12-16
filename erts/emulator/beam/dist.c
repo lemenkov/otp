@@ -1880,7 +1880,7 @@ dist_port_command(Port *prt, ErtsDistOutputBuf *obuf)
     ERTS_SMP_LC_ASSERT(erts_lc_is_port_locked(prt));
 
     if (size > (Uint) INT_MAX)
-	erl_exit(ERTS_ABORT_EXIT,
+	erl_exit(ERTS_DUMP_EXIT,
 		 "Absurdly large distribution output data buffer "
 		 "(%beu bytes) passed.\n",
 		 size);
@@ -1919,7 +1919,7 @@ dist_port_commandv(Port *prt, ErtsDistOutputBuf *obuf)
     ERTS_SMP_LC_ASSERT(erts_lc_is_port_locked(prt));
 
     if (size > (Uint) INT_MAX)
-	erl_exit(ERTS_ABORT_EXIT,
+	erl_exit(ERTS_DUMP_EXIT,
 		 "Absurdly large distribution output data buffer "
 		 "(%beu bytes) passed.\n",
 		 size);
